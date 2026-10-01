@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_gestione_animals,access_gestione_animals,model_gestione_animals,base.group_user,1,1,1,1
+access_gestione_specie,access_gestione_specie,model_gestione_specie,base.group_user,1,1,1,1
+access_gestione_razza,access_gestione_razza,model_gestione_razza,base.group_user,1,1,1,1
+access_gestione_animals_portal,access_gestione_animals_portal,model_gestione_animals,base.group_portal,1,1,1,1
+access_gestione_specie_portal,access_gestione_specie_portal,model_gestione_specie,base.group_portal,1,1,1,1
+access_gestione_razza_portal,access_gestione_razza_portal,model_gestione_razza,base.group_portal,1,1,1,1

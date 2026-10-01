@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_animal_form" model="ir.ui.view">
+        <field name="name">gestione.animals.form</field>
+        <field name="model">gestione.animals</field>
+        <field name="arch" type="xml">
+            <form string="Animale">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="partner_id"/>
+                        <field name="specie_id"/>
+                        <field name="razza_id" domain="['|', ('specie_id', '=', False), ('specie_id', '=', specie_id)]"/>
+                    </group>
+                    <group>
+                        <field name="date_of_birth"/>
+                        <field name="eta"/>
+                        <field name="colore" widget="color"/>
+                        <field name="sesso"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="view_animal_list" model="ir.ui.view">
+        <field name="name">gestione.animals.list</field>
+        <field name="model">gestione.animals</field>
+        <field name="arch" type="xml">
+            <list string="Animali">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="specie_id"/>
+                <field name="razza_id"/>
+                <field name="date_of_birth"/>
+                <field name="eta"/>
+                <field name="colore" widget="color"/>
+                <field name="sesso"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_gestione_animal" model="ir.actions.act_window">
+        <field name="name">Animali</field>
+        <field name="res_model">gestione.animals</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_gestione_animal"
+              name="Animali"
+              parent="menu_gestione_root"
+              action="action_gestione_animal"
+              sequence="20"/>
+</odoo>

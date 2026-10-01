@@ -1,0 +1,5 @@
+{
+    "xml.symbols.enabled": false,
+    "python.languageServer": "None",
+    "python-envs.defaultEnvManager": "ms-python.python:system"
+}

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <menuitem id="menu_gestione_root"
+              name="Gestione Animali"
+              sequence="10" web_icon="animali,static/description/icon.png"/>
+
+</odoo>

@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="portal_my_home_custom"
+        name="Portal My Animals"
+        inherit_id="portal.portal_my_home"
+        priority="30">
+        <xpath expr="//div[hasclass('o_portal_my_home')]" position="inside">
+            <div class="mt-4 w-100">
+                <t t-call="portal.portal_docs_entry">
+                    <t t-set="title">Animali</t>
+                    <t t-set="text">Visualizza i tuoi animali</t>
+                    <t t-set="url" t-value="'/my/animals'" />
+                    <t t-set="config_card" t-value="True" />
+                    <t t-set="icon" t-value="'/animali/static/img/dog.png'" />
+                </t>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="portal_my_animals"
+        name="I Miei Animali">
+
+        <t t-call="portal.portal_layout">
+
+            <div class="container mt-4 mb-5">
+
+                <h3 class="mb-4">
+                    I Miei Animali
+                </h3>
+
+                <t t-if="not animals">
+
+                    <div class="alert alert-warning">
+
+                        Non ci sono animali disponibili al momento.
+
+                    </div>
+
+                </t>
+
+                <t t-if="animals">
+
+                    <table class="table table-hover">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Nome</th>
+                                <th>Specie</th>
+                                <th>Razza</th>
+                                <th>Data di nascita</th>
+                                <th>Età</th>
+                                <th>Sesso</th>
+                                <th>Colore</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            <tr t-foreach="animals"
+                                t-as="animal">
+
+                                <td>
+
+                                    <a t-att-href="'/my/animals/%s' % animal.id">
+
+                                        <span t-field="animal.name" />
+
+                                    </a>
+
+                                </td>
+
+
+                                <td>
+
+                                    <span t-field="animal.specie_id" />
+
+                                </td>
+
+
+                                <td>
+
+                                    <span t-field="animal.razza_id" />
+
+                                </td>
+
+
+                                <td>
+
+                                    <span t-field="animal.date_of_birth"
+                                        t-options='{"widget": "date"}' />
+
+                                </td>
+
+
+                                <td>
+
+                                    <span t-field="animal.eta" />
+
+                                </td>
+
+
+                                <td>
+
+                                    <span t-field="animal.sesso" />
+
+                                </td>
+
+
+                                <td>
+
+                                    <span
+                                        t-att-style="'display:inline-block; width:25px; height:25px; background-color:%s; border:1px solid #000; border-radius:4px;' % animal.colore"
+                                    />
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </t>
+
+            </div>
+
+        </t>
+
+    </template>
+
+    <template id="portal_animal_page"
+        name="Dettaglio Animale">
+
+        <t t-call="portal.portal_layout">
+
+            <div class="container mt-4 mb-5">
+
+                <div class="row">
+
+                    <div class="col-12 col-lg-8">
+
+                        <div class="card">
+
+                            <div class="card-body">
+
+                                <h3 class="card-title mb-4"
+                                    t-field="animal.name" />
+
+                                <hr />
+
+
+                                <div class="row">
+
+                                    <div class="col-12 col-md-6 mb-3">
+
+                                        <strong>
+                                            Proprietario
+                                        </strong>
+
+                                        <br />
+
+                                        <span t-field="animal.partner_id" />
+
+                                    </div>
+
+                                    <div class="col-12 col-md-6 mb-3">
+
+                                        <strong>
+                                            Specie
+                                        </strong>
+
+                                        <br />
+
+                                        <span t-field="animal.specie_id" />
+
+                                    </div>
+
+                                    <div class="col-12 col-md-6 mb-3">
+
+                                        <strong>
+                                            Razza
+                                        </strong>
+
+                                        <br />
+
+                                        <span t-field="animal.razza_id" />
+
+                                    </div>
+
+                                    <div class="col-12 col-md-6 mb-3">
+
+                                        <strong>
+                                            Data di nascita
+                                        </strong>
+
+                                        <br />
+
+                                        <span t-field="animal.date_of_birth"
+                                            t-options='{"widget": "date"}' />
+
+                                    </div>
+
+                                    <div class="col-12 col-md-6 mb-3">
+
+                                        <strong>
+                                            Età
+                                        </strong>
+
+                                        <br />
+
+                                        <span
+                                            t-field="animal.eta" /> anni </div>
+
+                                    <div class="col-12 col-md-6 mb-3">
+
+                                        <strong>
+                                            Sesso
+                                        </strong>
+
+                                        <br />
+
+                                        <span t-field="animal.sesso" />
+
+                                    </div>
+
+                                    <div class="col-12 col-md-6 mb-3">
+
+                                        <strong>
+                                            Colore
+                                        </strong>
+
+                                        <br />
+
+                                        <span
+                                            t-att-style="'display:inline-block; width:30px; height:30px; background-color:%s; border:1px solid #000; border-radius:4px;' % animal.colore"
+                                        />
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-12 col-lg-4 mt-4 mt-lg-0">
+
+                        <div class="card">
+
+                            <div class="card-body">
+
+                                <h5 class="card-title">
+                                    Informazioni
+                                </h5>
+
+                                <a
+                                    t-att-href="'/my/animals/%s/certificate' % animal.id"
+                                    class="btn btn-primary w-100 mb-2"
+                                >
+
+                                    📄 Scarica certificato PDF
+
+                                </a>
+
+                                <a
+                                    href="/my/animals"
+                                    class="btn btn-secondary w-100"
+                                >
+
+                                    Torna agli animali
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </t>
+
+    </template>
+
+</odoo>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="action_gestione_specie" model="ir.actions.act_window">
+        <field name="name">Specie</field>
+        <field name="res_model">gestione.specie</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_gestione_razza" model="ir.actions.act_window">
+        <field name="name">Razze</field>
+        <field name="res_model">gestione.razza</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_gestione_config"
+              name="Configurazione"
+              parent="menu_gestione_root"
+              sequence="10"/>
+
+    <menuitem id="menu_gestione_specie"
+              name="Specie"
+              parent="menu_gestione_config"
+              action="action_gestione_specie"
+              sequence="10"/>
+
+    <menuitem id="menu_gestione_razza"
+              name="Razze"
+              parent="menu_gestione_config"
+              action="action_gestione_razza"
+              sequence="20"/>
+</odoo>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="report_animal_certificate_document">
+        <t t-call="web.html_container">
+
+            <t t-foreach="docs" t-as="animal">
+
+                <t t-call="web.external_layout">
+
+                    <div class="page">
+
+                        <div style="width: 100%; margin-bottom: 20px; overflow: hidden;">
+                            <div style="float: left; width: 70%;">
+                                <p style="font-size:12px; color:#555; margin: 0 0 5px 0;">
+                                    Data emissione: <span t-esc="current_datetime"/>
+                                </p>
+                                <h1 style="font-size:32px; margin-bottom:5px;">
+                                    CERTIFICATO DELL'ANIMALE
+                                </h1>
+                                <p style="font-size:16px; color:#666; margin: 0;">
+                                    Certificato ufficiale dell'animale registrato
+                                </p>
+                            </div>
+                            <div style="float: right; width: 30%; text-align: right;">
+                                <img t-att-src="base_url + '/animali/static/img/habitat.png'"
+                                style="max-height: 90px; width: auto;"
+                                alt="Logo" />
+                            </div>
+
+                        </div>
+
+                        <hr
+                            style="clear: both; border: 0; border-top: 1px solid #ccc; margin-top: 10px; margin-bottom: 20px;" />
+
+                        <div style="margin-top:30px;">
+
+                            <h2 style="margin-bottom:20px;">
+                                Informazioni dell'animale
+                            </h2>
+
+                            <table style="width:100%; border-collapse:collapse;">
+
+                                <tr>
+                                    <td
+                                        style="padding:12px; border:1px solid #ddd; font-weight:bold;">
+                                        Nome
+                                    </td>
+                                    <td style="padding:12px; border:1px solid #ddd;">
+                                        <span t-field="animal.name" />
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td
+                                        style="padding:12px; border:1px solid #ddd; font-weight:bold;">
+                                        Specie
+                                    </td>
+                                    <td style="padding:12px; border:1px solid #ddd;">
+                                        <span t-field="animal.specie_id" />
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td
+                                        style="padding:12px; border:1px solid #ddd; font-weight:bold;">
+                                        Razza
+                                    </td>
+                                    <td style="padding:12px; border:1px solid #ddd;">
+                                        <span t-field="animal.razza_id" />
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td
+                                        style="padding:12px; border:1px solid #ddd; font-weight:bold;">
+                                        Data di nascita
+                                    </td>
+                                    <td style="padding:12px; border:1px solid #ddd;">
+                                        <span t-field="animal.date_of_birth"
+                                            t-options='{"widget": "date"}' />
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td
+                                        style="padding:12px; border:1px solid #ddd; font-weight:bold;">
+                                        Età
+                                    </td>
+                                    <td style="padding:12px; border:1px solid #ddd;">
+                                        <span t-field="animal.eta" /> anni </td>
+                                </tr>
+
+                                <tr>
+                                    <td
+                                        style="padding:12px; border:1px solid #ddd; font-weight:bold;">
+                                        Sesso
+                                    </td>
+                                    <td style="padding:12px; border:1px solid #ddd;">
+                                        <span t-field="animal.sesso" />
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td
+                                        style="padding:12px; border:1px solid #ddd; font-weight:bold;">
+                                        Colore
+                                    </td>
+                                    <td style="padding:12px; border:1px solid #ddd;">
+                                        <span
+                                            t-att-style="'display: inline-block; width: 25px; height: 25px; background-color: %s; border: 1px solid #000; border-radius: 4px; vertical-align: middle;' % animal.colore" />
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td
+                                        style="padding:12px; border:1px solid #ddd; font-weight:bold;">
+                                        Proprietario
+                                    </td>
+                                    <td style="padding:12px; border:1px solid #ddd;">
+                                        <span t-field="animal.partner_id" />
+                                    </td>
+                                </tr>
+
+                            </table>
+
+                        </div>
+
+                        <div style="margin-top:50px; text-align:center;">
+
+                            <p style="font-size:13px; color:#777;">
+                                Il presente certificato identifica l'animale
+                                registrato nel sistema.
+                            </p>
+
+                            <p style="margin-top:30px;">
+                                ______________________________
+                            </p>
+
+                            <p style="font-size:12px;">
+                                Certificato generato automaticamente
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </t>
+
+            </t>
+
+        </t>
+    </template>
+
+    <record id="action_report_animal_certificate"
+        model="ir.actions.report">
+
+        <field name="name">Certificato Animale</field>
+
+        <field name="model">gestione.animals</field>
+
+        <field name="report_type">qweb-pdf</field>
+
+        <field name="report_name">animali.report_animal_certificate_document</field>
+
+        <field name="report_file">animali.report_animal_certificate_document</field>
+
+        <field name="binding_model_id"
+            ref="model_gestione_animals" />
+
+        <field name="binding_type">report</field>
+
+    </record>
+
+</odoo>
